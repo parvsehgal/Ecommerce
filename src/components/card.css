@@ -1,0 +1,7 @@
+.cardDiv {
+  height: 200px;
+  width: 400px;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+  border-radius: 7px;
+}

@@ -1,0 +1,17 @@
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+  height: 30px;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  margin-top: -20px;
+}
+.links {
+  text-decoration: none;
+  color: white;
+}
+.active {
+  color: mediumspringgreen;
+}

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { cartContext } from "./context/cartContext";
 import { Snackbar } from "@mui/material";
 
-function Card({ title, description, price }) {
+function Card({ title, description, price, images }) {
   let { dataForCart, setCartData } = useContext(cartContext);
   function cartHandler() {
     setIsOpen(true);
@@ -14,6 +14,7 @@ function Card({ title, description, price }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="cardDiv">
+      <img src={images[0]} className="prodImage"></img>
       <p>{title}</p>
       <p>{description}</p>
       <p>${price}</p>

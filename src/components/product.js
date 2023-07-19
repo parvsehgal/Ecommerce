@@ -9,6 +9,7 @@ function Prod() {
   const [isLoading, setLoading] = useState(false);
   const [val, setval] = useState("");
   const [isNotFound, setNotFound] = useState(false);
+
   async function getData() {
     setLoading(true);
     let { data } = await axios.get("https://dummyjson.com/products/");
@@ -16,9 +17,11 @@ function Prod() {
     console.log(dataFromApi);
     setLoading(false);
   }
+
   let compToRender = dataFromApi.map((data) => {
     return <Card {...data}></Card>;
   });
+
   useEffect(() => {
     if (val == "") {
       getData();
@@ -28,6 +31,7 @@ function Prod() {
   useEffect(() => {
     getData();
   }, []);
+
   function changeHandler(event) {
     setval(event.target.value);
     console.log(val);
@@ -62,4 +66,5 @@ function Prod() {
     </div>
   );
 }
+
 export default Prod;

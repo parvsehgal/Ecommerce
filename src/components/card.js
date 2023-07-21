@@ -1,16 +1,22 @@
 import "./card.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { cartContext } from "./context/cartContext";
 import { Snackbar } from "@mui/material";
+import { json } from "react-router-dom";
 
 function Card({ title, description, price, images }) {
-  let { dataForCart, setCartData } = useContext(cartContext);
+  let { dataForCart, setCartData, localData, setLocalData } =
+    useContext(cartContext);
   function cartHandler() {
     setIsOpen(true);
-    setCartData([...dataForCart, { title: title, cost: price }]);
-    console.log("changed cart data");
+    const someVar = [...dataForCart, { title: title, cost: price }];
+    setCartData(someVar || []);
     console.log(dataForCart);
+    localStorage.setItem("cartData", JSON.stringify(someVar));
+    setLocalData(localStorage.getItem("cartData"));
+    console.log(JSON.parse(localData));
   }
+
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="cardDiv">

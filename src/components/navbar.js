@@ -1,21 +1,29 @@
 import { NavLink, Link } from "react-router-dom";
 import "./nav.css";
 import { Drawer, Box } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { cartContext } from "./context/cartContext";
 function Nav() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  let { dataForCart, setCartData } = useContext(cartContext);
+  let { dataForCart, setCartData, localData, setLocalData } =
+    useContext(cartContext);
+
+  useEffect(() => {
+    let temp = JSON.parse(localData);
+    setCartData(temp || []);
+  }, []);
 
   function removeHandler(i) {
-    let newCartData = dataForCart.filter((_, index) => {
+    let newCartData = dataForCart?.filter((_, index) => {
       return index !== i;
     });
-    setCartData(newCartData);
-    console.log(i);
+    setCartData(newCartData || []);
+    localStorage.setItem("cartData", JSON.stringify(newCartData));
+    setLocalData(localStorage.getItem("cartData"));
+    console.log(JSON.parse(localData));
   }
 
-  let toRender = dataForCart.map((data, index) => {
+  let toRender = dataForCart?.map((data, index) => {
     return (
       <div className="cartDiv" {...data} key={index}>
         <h3>{data.title}</h3>

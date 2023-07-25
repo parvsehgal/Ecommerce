@@ -14,7 +14,6 @@ function Prod() {
     setLoading(true);
     let { data } = await axios.get("https://dummyjson.com/products/");
     setData(data.products);
-    console.log(dataFromApi);
     setLoading(false);
   }
 
@@ -34,7 +33,6 @@ function Prod() {
 
   function changeHandler(event) {
     setval(event.target.value);
-    console.log(val);
   }
 
   function searchHandler(valToSearch) {

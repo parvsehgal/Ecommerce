@@ -3,6 +3,7 @@ import "./nav.css";
 import { Drawer, Box } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "./context/cartContext";
+import Counter from "./counter";
 function Nav() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   let { dataForCart, setCartData, localData, setLocalData } =
@@ -20,7 +21,6 @@ function Nav() {
     setCartData(newCartData || []);
     localStorage.setItem("cartData", JSON.stringify(newCartData));
     setLocalData(localStorage.getItem("cartData"));
-    console.log(JSON.parse(localData));
   }
 
   let toRender = dataForCart?.map((data, index) => {
@@ -31,6 +31,7 @@ function Nav() {
         <button className="remover" onClick={() => removeHandler(index)}>
           Remove
         </button>
+        <Counter {...data} val={index} />
       </div>
     );
   });

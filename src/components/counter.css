@@ -1,0 +1,19 @@
+.countDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.countBtn {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.varDiv {
+  margin-top: 5px;
+}
+.qty {
+  margin-top: 4px;
+  margin-left: 5px;
+}

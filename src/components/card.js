@@ -2,19 +2,19 @@ import "./card.css";
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "./context/cartContext";
 import { Snackbar } from "@mui/material";
-import { json } from "react-router-dom";
 
 function Card({ title, description, price, images }) {
   let { dataForCart, setCartData, localData, setLocalData } =
     useContext(cartContext);
+
   function cartHandler() {
     setIsOpen(true);
-    const someVar = [...dataForCart, { title: title, cost: price }];
-    setCartData(someVar || []);
-    console.log(dataForCart);
-    localStorage.setItem("cartData", JSON.stringify(someVar));
-    setLocalData(localStorage.getItem("cartData"));
-    console.log(JSON.parse(localData));
+    if (dataForCart.some((e) => e.title === title) === false) {
+      const someVar = [...dataForCart, { title: title, cost: price, qty: 1 }];
+      setCartData(someVar || []);
+      localStorage.setItem("cartData", JSON.stringify(someVar));
+      setLocalData(localStorage.getItem("cartData"));
+    }
   }
 
   const [isOpen, setIsOpen] = useState(false);

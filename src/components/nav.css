@@ -20,7 +20,7 @@
   text-decoration: none;
 }
 .cartDiv {
-  height: 130px;
+  height: 150px;
   background-color: black;
   display: flex;
   flex-direction: column;

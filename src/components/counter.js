@@ -33,9 +33,6 @@ function Counter(props) {
       console.log(newData);
       if (newData.length == 0) {
         return;
-      } else {
-        let temp = newData[props.val].qty;
-        setCopy(temp);
       }
       return;
     }
